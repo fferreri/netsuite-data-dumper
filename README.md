@@ -18,8 +18,7 @@ NSDD is designed to be very simple and straightforward to use. All you can do wi
 
 Run `$ dumper.php` command from your terminal to see the available commands and the supported parameters. 
 
-`
-$ ./dumper.php
+`$ ./dumper.php
 NetsuiteDumper version 1.0
 
 Usage:
@@ -40,8 +39,7 @@ Available commands:
  ns
   ns:dump    Download all records from all NetSuite known record types
   ns:export  Export records to CSV format
-  ns:get     Download records from NetSuite
-`
+  ns:get     Download records from NetSuite`
 
 
 
