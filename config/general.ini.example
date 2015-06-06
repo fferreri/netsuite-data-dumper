@@ -1,0 +1,10 @@
+[netsuite]
+endpoint = 2015_1
+host     = https://webservices.netsuite.com
+email    = your@netuiteusername
+password = your_password
+role     = your role id
+account  = your account number
+
+[debug]
+enabled  = false

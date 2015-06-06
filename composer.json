@@ -1,0 +1,27 @@
+{
+  "name": "fferreri/netsuite-data-dumper",
+  "autoload": {
+    "psr-4": {"FFerreri\\": "src/"}
+  },
+  "require": {
+    "symfony/console": "~2.6",
+    "symfony/var-dumper": "~2.6",
+    "fungku/netsuite-php": "~2015.1",
+    "league/csv": "^7.1",
+    "hassankhan/config": "^0.8.2"
+  },
+  "authors": [
+    {
+      "name": "Federico Ferreri",
+      "email": "federico@ferreri.com.ar",
+      "homepage": "http://www.ferreri.com.ar",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+      "email": "help@ferreri.com.ar",
+      "issues": "http://github.com/ferreri/netsuite-data-dumper/issues",
+      "docs":  "http://github.com/ferreri/netsuite-data-dumper/README.md"
+  }
+
+}
