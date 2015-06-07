@@ -85,4 +85,4 @@ Options:
 
 ## License
 
-Original work is Copyright © 2010-2012 NetSuite Inc. and provided "as is."
+Original work is Copyright NetSuite Inc. 2015 and provided "as is."
