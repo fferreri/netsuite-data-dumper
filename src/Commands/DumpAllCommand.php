@@ -18,7 +18,7 @@ class DumpAllCommand extends Command
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'The page size',
-                100
+                50
             )
             ->addOption(
                 'count',
