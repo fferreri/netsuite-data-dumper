@@ -1,6 +1,6 @@
 # Netsuite Data Dumper
 
-The Netsuite Data Dumper (NSDD) is a Symfony Console Application that helps in downloading raw data from Netsuite. It extracts most of the supported record types and stores them as JSON files. All is done using Netsuite's PHP Toolkit through the great Ryan Winchester's ["NetSuite PHP API Client"](https://github.com/fungku/netsuite-php). 
+The Netsuite Data Dumper (NSDD) is a [Symfony Console Application](http://symfony.com/doc/current/components/console/index.html) that helps in downloading raw data from Netsuite. It extracts most of the supported record types and stores them as JSON files. All is done using Netsuite's PHP Toolkit through the great Ryan Winchester's ["NetSuite PHP API Client"](https://github.com/fungku/netsuite-php). 
 
 ## Requirements
 
