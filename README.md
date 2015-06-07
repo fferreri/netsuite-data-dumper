@@ -1,6 +1,6 @@
 # Netsuite Data Dumper
 
-The Netsuite Data Dumper (NSDD) Helps in downloading data from Netsuite. It extracts most of the supported record types and stores them as JSON files. All is done using Netsuite's PHP Toolkit. 
+The Netsuite Data Dumper (NSDD) is a Symfony Console Application that helps in downloading raw data from Netsuite. It extracts most of the supported record types and stores them as JSON files. All is done using Netsuite's PHP Toolkit through the great Ryan Winchester's ["NetSuite PHP API Client"](https://github.com/fungku/netsuite-php). 
 
 ## Requirements
 
@@ -45,6 +45,44 @@ Available commands:
   ns:get     Download records from NetSuite
 ```
 
+### ns:get
+```
+Usage:
+  ns:get [options] [--] [<entity>]
 
+Arguments:
+  entity                       The entity type name to count
 
+Options:
+      --pageSize[=PAGESIZE]    The page size [default: 50]
+      --startPage[=STARTPAGE]  The start page index (index base is 1) [default: 1]
+      --endPage[=ENDPAGE]      The end page index (index base is 1) [default: 9999999999]
+      --count                  Counts records and prints the result.
+```
 
+### ns:dump
+```
+Usage:
+  ns:dump [options]
+
+Options:
+      --pageSize[=PAGESIZE]  The page size [default: 50]
+      --count                Counts records and prints the result.
+```
+
+### ns:export
+```
+Usage:
+  ns:export [options]
+
+Options:
+  -e, --entity=ENTITY      The entity type name to export
+  -f, --fields=FIELDS      The fields to export
+      --outfile[=OUTFILE]  The output file path and name
+      --skip[=SKIP]        The number of records to skip [default: 0]
+      --max[=MAX]          The number of records to export [default: 9999999999]
+```
+
+## License
+
+Original work is Copyright © 2010-2012 NetSuite Inc. and provided "as is."
