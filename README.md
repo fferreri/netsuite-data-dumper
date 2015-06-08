@@ -11,7 +11,7 @@ NSDD requires PHP 5.5+
 The supported way of installing NSDD is via Composer.
 
 ```
-$ composer require fferreri/netsuite-data-dumper
+$ composer create-project "fferreri/netsuite-data-dumper:dev-master" <directory-name>
 ```
 
 ## Usage
