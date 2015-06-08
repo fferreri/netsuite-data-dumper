@@ -4,6 +4,7 @@
     "psr-4": {"FFerreri\\": "src/"}
   },
   "require": {
+    "php": ">=5.5.0",
     "symfony/console": "~2.6",
     "symfony/var-dumper": "~2.6",
     "fungku/netsuite-php": "~2015.1",
