@@ -1,5 +1,9 @@
 {
   "name": "fferreri/netsuite-data-dumper",
+  "license": "Apache-2.0",
+  "type": "project",
+  "keywords": ["netsuite","download","backup"],
+  "homepage": "http://github.com/fferreri/netsuite-data-dumper",
   "autoload": {
     "psr-4": {"FFerreri\\": "src/"}
   },
