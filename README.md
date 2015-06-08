@@ -14,6 +14,25 @@ The supported way of installing NSDD is via Composer.
 $ composer create-project "fferreri/netsuite-data-dumper:dev-master" <directory-name>
 ```
 
+## Configuration
+
+Before running `dumper.php` you must supply your Netsuite credentials through the 'config/general.ini' configuration file. 
+ 
+```
+[netsuite]
+endpoint = 2015_1
+host     = https://webservices.netsuite.com
+email    = your@netuiteusername
+password = your_password
+role     = your role id
+account  = your account number
+
+[debug]
+enabled  = false
+```
+
+You usually need to edit the email, password, role and account fields. That information is available in Netsuite's setup area.  
+
 ## Usage
 
 NSDD is designed to be very simple and straightforward to use. All you can do with it is to download records from Netsuite and export those records into a CSV file to be inserted into your favorite database. 

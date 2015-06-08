@@ -27,11 +27,16 @@ class App extends Application {
     public function __construct($name = 'UNKNOWN', $version = 'UNKNOWN') {
         $this->app_dir = realpath(__DIR__ . '/../');
 
-        $this->app_conf = Config::load([
-            $this->app_dir . '/config/general.ini',
-            $this->app_dir . '/config/record_types.ini',
-            $this->app_dir . '/config/excluded_record_types.ini'
-        ]);
+        try {
+            $this->app_conf = Config::load([
+                $this->app_dir . '/config/general.ini',
+                $this->app_dir . '/config/record_types.ini',
+                $this->app_dir . '/config/excluded_record_types.ini'
+            ]);
+        } catch(\Exception $e) {
+            print "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nPlease check your configuration files.  You must create a valid\n'general.ini' (you can use the supplied 'general.ini.template')\nfile with your Netsuite  credentials in order to run this tool.\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+            exit(1);
+        }
 
         $ns_config = array(
             "endpoint" => $this->app_conf->get('netsuite.endpoint'),
