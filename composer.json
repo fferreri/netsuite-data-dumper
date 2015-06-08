@@ -4,6 +4,7 @@
   "type": "project",
   "keywords": ["netsuite","download","backup"],
   "homepage": "http://github.com/fferreri/netsuite-data-dumper",
+  "description": "Helps in downloading data from your Netsuite account. It extracts most of the supported object types and stores them as JSON files.",
   "autoload": {
     "psr-4": {"FFerreri\\": "src/"}
   },
