@@ -41,7 +41,7 @@ Run `$ dumper.php` command from your terminal to see the available commands and 
 
 ```
 $ ./dumper.php
-NetsuiteDumper version 1.0
+NetsuiteDumper version 1.1
 
 Usage:
   command [options] [arguments]
@@ -61,6 +61,7 @@ Available commands:
  ns
   ns:dump    Download all records from all NetSuite known record types
   ns:export  Export records to CSV format
+  ns:fields  Export record fields to the STDOUT for a given file (JSON output from ns:get or ns:dump), no matter the entity type.
   ns:get     Download records from NetSuite
 ```
 
@@ -95,13 +96,24 @@ Usage:
   ns:export [options]
 
 Options:
-  -e, --entity=ENTITY      The entity type name to export
-  -f, --fields=FIELDS      The fields to export
+      --entity=ENTITY      The entity type name to export
+      --fields=FIELDS      The fields to export
       --outfile[=OUTFILE]  The output file path and name
       --skip[=SKIP]        The number of records to skip [default: 0]
       --max[=MAX]          The number of records to export [default: 9999999999]
 ```
 
-## License
+### ns:fields
+```
+Usage:
+  ns:fields [options] [--] [<filename>]
 
+Arguments:
+  filename                   The input file path and name
+
+Options:
+      --separator=SEPARATOR  A character or string to separate field names. [default: "\n"]
+```
+
+## License
 Original work is Copyright NetSuite Inc. 2015 and provided "as is."

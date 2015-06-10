@@ -1,6 +1,6 @@
 <?php namespace FFerreri;
 /*
- * Copyright [yyyy] [name of copyright owner]
+ * Copyright 2015 Federico Ferreri
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,21 @@ class App extends Application {
             exit(1);
         }
 
+        parent::__construct($name, $version);
+    }
+
+    public function getAppPath()
+    {
+        return $this->app_dir;
+    }
+
+    public function getConfig()
+    {
+        return $this->app_conf;
+    }
+
+    public function initializeNetsuiteService()
+    {
         $ns_config = array(
             "endpoint" => $this->app_conf->get('netsuite.endpoint'),
             "host"     => $this->app_conf->get('netsuite.host'),
@@ -53,22 +68,10 @@ class App extends Application {
         if ($this->app_conf->get('debug.enabled', false)) {
             $this->netsuite_service->logRequests(true);
         }
-
-        parent::__construct($name, $version);
-    }
-
-    public function getAppPath()
-    {
-        return $this->app_dir;
     }
 
     public function getNetsuiteService()
     {
         return $this->netsuite_service;
-    }
-
-    public function getConfig()
-    {
-        return $this->app_conf;
     }
 }

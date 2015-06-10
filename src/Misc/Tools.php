@@ -1,5 +1,4 @@
-#!/usr/local/bin/php
-<?php
+<?php namespace FFerreri\Misc;
 /*
  * Copyright 2015 Federico Ferreri
  *
@@ -15,18 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('vendor/autoload.php');
 
-use FFerreri\App;
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
 
-$app = new App('NetsuiteDumper', '1.1');
+class Tools
+{
+    public static function objectToDotNotationArray($input)
+    {
+        $ritit = new RecursiveIteratorIterator(new RecursiveArrayIterator($input));
+        $result = array();
+        foreach ($ritit as $leafValue) {
+            $keys = array();
+            foreach (range(0, $ritit->getDepth()) as $depth) {
+                $keys[] = $ritit->getSubIterator($depth)->key();
+            }
+            $result[ join('.', $keys) ] = $leafValue;
+        }
+        return $result;
+    }
 
-$app->addCommands([
-    new \FFerreri\Commands\GetRecordsCommand(),
-    new \FFerreri\Commands\DumpAllCommand(),
-    new \FFerreri\Commands\ExportRecordsCommand(),
-    new \FFerreri\Commands\ExportFieldsCommand(),
-]);
-
-$app->run();
-
+}

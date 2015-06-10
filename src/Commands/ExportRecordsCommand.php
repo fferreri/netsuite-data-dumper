@@ -1,6 +1,6 @@
 <?php namespace FFerreri\Commands;
 /*
- * Copyright [yyyy] [name of copyright owner]
+ * Copyright 2015 Federico Ferreri
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use League\Csv\Writer;
+use FFerreri\Misc\Tools;
 
 class ExportRecordsCommand extends Command
 {
@@ -30,13 +31,13 @@ class ExportRecordsCommand extends Command
             ->setDescription('Export records to CSV format')
             ->addOption(
                 'entity',
-                'e',
+                null,
                 InputOption::VALUE_REQUIRED,
                 'The entity type name to export'
             )
             ->addOption(
                 'fields',
-                'f',
+                null,
                 InputOption::VALUE_REQUIRED,
                 'The fields to export'
             )
@@ -62,6 +63,11 @@ class ExportRecordsCommand extends Command
             );
 
 
+    }
+
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->getApplication()->initializeNetsuiteService();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -97,7 +103,7 @@ class ExportRecordsCommand extends Command
         foreach (glob($out_dir . '/*.json') as $file_name) {
             if ($idx++ < $skip_records) continue;
             $data = [];
-            $record = $this->objectToDotNotationArray(json_decode(file_get_contents($file_name)));
+            $record = Tools::objectToDotNotationArray(json_decode(file_get_contents($file_name)));
 
             foreach ($export_fields as $field) {
                 $data[] = (isset($record[$field])) ? $record[$field] : null;
@@ -117,19 +123,5 @@ class ExportRecordsCommand extends Command
         } else {
             $writer->writeln(implode(",", $data));
         }
-    }
-
-    private function objectToDotNotationArray($input)
-    {
-        $ritit = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($input));
-        $result = array();
-        foreach ($ritit as $leafValue) {
-            $keys = array();
-            foreach (range(0, $ritit->getDepth()) as $depth) {
-                $keys[] = $ritit->getSubIterator($depth)->key();
-            }
-            $result[ join('.', $keys) ] = $leafValue;
-        }
-        return $result;
     }
 }

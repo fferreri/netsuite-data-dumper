@@ -1,6 +1,6 @@
 <?php namespace FFerreri\Commands;
 /*
- * Copyright [yyyy] [name of copyright owner]
+ * Copyright 2015 Federico Ferreri
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use Fungku\NetSuite\Classes\SearchRequest;
-
-
 
 class GetRecordsCommand extends Command
 {
@@ -66,6 +64,11 @@ class GetRecordsCommand extends Command
             );
 
 
+    }
+
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->getApplication()->initializeNetsuiteService();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
