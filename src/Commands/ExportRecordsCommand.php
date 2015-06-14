@@ -29,7 +29,7 @@ class ExportRecordsCommand extends Command
         $this
             ->setName('ns:export')
             ->setDescription('Export records to CSV format')
-            ->addOption(
+            ->addArgument(
                 'entity',
                 null,
                 InputOption::VALUE_REQUIRED,
@@ -65,16 +65,11 @@ class ExportRecordsCommand extends Command
 
     }
 
-    protected function initialize(InputInterface $input, OutputInterface $output)
-    {
-        $this->getApplication()->initializeNetsuiteService();
-    }
-
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $ti = microtime(true);
 
-        $entity_type   = $input->getOption('entity');
+        $entity_type   = $input->getArgument('entity');
         $export_fields = explode(",", $input->getOption('fields'));
         $max_records   = $input->getOption('max');
         $skip_records  = $input->getOption('skip');
